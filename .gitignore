@@ -1,0 +1,14 @@
+/target/
+**/target/
+/dist/
+/.local/
+*.log
+*.tmp
+*.mp4
+*.jfr
+*.key
+/artifacts/private/
+**/accounts.toml
+/mods/
+/cache/
+/fuzz/artifacts/

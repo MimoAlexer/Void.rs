@@ -1,0 +1,7 @@
+id = "void-metrics-wasm"
+version = "0.1.0"
+sdk = 1
+runtime = "wasm"
+entry = "void_metrics_wasm.wasm"
+capabilities = ["hud", "metrics"]
+deferrable = false

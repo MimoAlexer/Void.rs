@@ -1,0 +1,41 @@
+[package]
+name = "void-protocol-fuzz"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+# Independent workspace: no root Cargo.toml edits or fuzz tools in product builds.
+[workspace]
+members = ["."]
+resolver = "3"
+
+[features]
+default = []
+fuzzing = ["dep:libfuzzer-sys"]
+
+[dependencies]
+libfuzzer-sys = { version = "0.4", optional = true }
+void-protocol = { path = "../crates/void-protocol" }
+
+[[bin]]
+name = "frame_codec"
+path = "fuzz_targets/frame_codec.rs"
+test = false
+doc = false
+bench = false
+required-features = ["fuzzing"]
+
+[[bin]]
+name = "network_nbt"
+path = "fuzz_targets/network_nbt.rs"
+test = false
+doc = false
+bench = false
+required-features = ["fuzzing"]
+
+[[bin]]
+name = "seed_check"
+path = "src/bin/seed_check.rs"

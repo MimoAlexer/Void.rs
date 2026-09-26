@@ -1,0 +1,70 @@
+schema_version = 1
+
+[graphics]
+width = 1920
+height = 1080
+render_distance = 12
+vsync = false
+fullscreen = false
+# preferred_gpu = "NVIDIA"
+
+[performance]
+target_fps = 240 # 0 = uncapped; scheduler budgeting then uses 240 Hz.
+
+[performance.event_horizon]
+# Experimental until real A/B measurements pass every documented gate.
+# Options: baseline, frame_coordination, event_horizon.
+mode = "baseline"
+memory_budget_mib = 256
+max_jobs = 4096
+nearby_deadline_frames = 2
+aging_ms = 250
+fairness_reserve_percent = 10
+safety_margin_us = 150
+max_frames_in_flight = 2
+
+[ui]
+scale = 1.0
+accent = [0.94, 0.64, 0.35]
+background = [0.015, 0.015, 0.018]
+video_enabled = true
+# video_path = "assets/black-hole.mp4"
+show_diagnostics = true
+
+[ui.hud.performance]
+x = 16.0
+y = 16.0
+scale = 1.0
+enabled = true
+
+[ui.hud.keystrokes]
+x = 16.0
+y = 100.0
+scale = 1.0
+enabled = true
+
+[controls]
+mouse_sensitivity = 0.5
+invert_y = false
+toggle_sprint = false
+fov_degrees = 70.0
+
+[controls.bindings]
+forward = "KeyW"
+backward = "KeyS"
+left = "KeyA"
+right = "KeyD"
+jump = "Space"
+sprint = "ControlLeft"
+attack = "MouseLeft"
+use_item = "MouseRight"
+zoom = "KeyC"
+menu = "Escape"
+
+[audio]
+master_volume = 1.0
+
+[account]
+# Public OAuth registration ID, not a secret. Tokens use platform credential storage.
+client_id = ""
+redirect_uri = "http://127.0.0.1:43189/callback"

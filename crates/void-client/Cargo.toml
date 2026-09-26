@@ -1,0 +1,25 @@
+[package]
+name = "void-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+directories = "6"
+egui = "0.33.3"
+egui-winit = "0.33.3"
+winit = "0.30.13"
+crossbeam-channel = "0.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.9"
+sha2 = "0.10"
+tempfile = "3"
+tokio = { version = "1", features = ["rt-multi-thread"] }
+void-core = { path = "../void-core" }
+void-protocol = { path = "../void-protocol" }
+void-render = { path = "../void-render" }
+void-services = { path = "../void-services" }
+void-sdk = { path = "../void-sdk" }

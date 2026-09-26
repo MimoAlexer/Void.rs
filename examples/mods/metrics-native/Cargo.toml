@@ -1,0 +1,16 @@
+[package]
+name = "void-metrics-native"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+void-sdk = { path = "../../../crates/void-sdk" }
+
+[workspace]
+
+[profile.release]
+panic = "abort"
