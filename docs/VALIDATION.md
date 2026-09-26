@@ -14,6 +14,9 @@ Windows x86-64, Intel Core i7-14700HX, NVIDIA GeForce RTX 5060 Laptop GPU, Vulka
 | `cargo clippy --workspace --all-targets --locked -- -D warnings` | Pass |
 | `cargo test --workspace --locked` | 71 tests passed; none failed or ignored |
 | `cargo build --release --locked -p void-client -p void-launcher` | Pass |
+| `pwsh -NoProfile -File scripts/test-measure.ps1` | Pass; synthetic analyzer/plan contract checks only |
+
+The separate fuzz harness also passed formatting, strict Clippy, nine seeds and 359 deterministic mutations. Nightly/libFuzzer sanitizer targets and sustained campaigns remain unverified; see [fuzzing instructions](../fuzz/README.md).
 
 The tests include bounded and compressed protocol sessions, NIST AES-CFB8 data, PKCE callback validation, configuration recovery, scheduler invalidation/fairness, dry-land collision prediction, target reach/occlusion, native-trust fingerprints, Wasm fuel/memory traps, and signed-update rollback/tamper rejection. They do not establish complete vanilla mechanics.
 
@@ -32,6 +35,8 @@ The local `fixture_server` example sends a compressed offline login/configuratio
 | Launcher → client menu | 120 | 0 | 0 | 118 |
 
 Every client run exited successfully. Two initial GPU timestamp samples are absent because measurements are collected after frame-slot completion. The fixture logged teleport acknowledgement and completion of initial loading. Framebuffer PNGs were visually inspected: [menu](images/menu.png), [terrain and diagnostic player](images/terrain.png).
+
+A further 800-frame Event Horizon run loaded the compiled Rust Wasm metrics module from saved mod preferences with `deferrable = true`. Built-in metrics were disabled for this test; its four visible HUD rows came from the scheduled Wasm callback. The application exited successfully and retained the enabled preference. The packaged launcher also started its sibling packaged executable, which wrote 120 frame samples and exited successfully.
 
 These are short smoke tests with minimal geometry and no controlled input stream. They are **not performance acceptance runs**, do not prove the 240 FPS gameplay target, and cannot establish an Event Horizon speedup. Screenshot readback deliberately stalls the final captured frame, so captured runs must not be used for frame-time qualification. No input-to-photon measurement was performed.
 

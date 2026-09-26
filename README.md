@@ -47,6 +47,7 @@ The [algorithm and acceptance gates](docs/EVENT_HORIZON.md) require real rendere
 ## Validation
 
 The [local validation report](docs/VALIDATION.md) records the executed checks, framebuffer captures, hardware, and outstanding release gates.
+The [compatibility checklist](docs/COMPATIBILITY.md) tracks the full multiplayer scope. [Fuzz targets](fuzz/README.md) and [measurement tools](docs/EVENT_HORIZON.md) are included for continued verification.
 
 ```sh
 cargo fmt --all --check

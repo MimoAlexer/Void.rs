@@ -51,7 +51,7 @@ $plan = Get-Content -LiteralPath (Join-Path $planDirectory 'run-plan.json') -Raw
 Assert-That ($plan.trial_count -eq 18 -and $plan.kind -eq 'interactive_trial_plan_not_executed') 'Plan must prepare three repeats per three modes in two pacing conditions.'
 $normalized = @($plan.trials | ForEach-Object {
     $config = Get-Content -LiteralPath $_.config -Raw
-    Assert-That ($config -match '(?m)^width = 1920$' -and $config -match '(?m)^height = 1080$') 'Trial resolution must match.'
+    Assert-That ($config -match '(?m)^width = 1920\r?$' -and $config -match '(?m)^height = 1080\r?$') 'Trial resolution must match.'
     $config -replace '(?m)^target_fps = \d+\r?$', 'target_fps = RATE' -replace '(?m)^mode = "[a-z_]+"\r?$', 'mode = "MODE"'
 })
 Assert-That (@($normalized | Select-Object -Unique).Count -eq 1) 'Only scheduler mode and pacing rate may differ between prepared configs.'
